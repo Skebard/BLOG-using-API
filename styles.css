@@ -1,0 +1,292 @@
+*{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+    font-family: 'Roboto',sans-serif;
+}
+html{
+    height:100%;
+}
+img{
+    display:block;
+}
+ul{
+    list-style-type:none;
+}
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+}
+body{
+    position:relative;
+    min-height:100%;
+    background-color:white;
+    padding-bottom:4rem; /* footer hight */
+}
+header{
+    height:5rem;
+    background-color:blue;
+    position:sticky;
+    z-index:20;
+    top:0;
+}
+main{
+   
+}
+
+.hidden{
+    display:none;
+}
+.min-width{
+    min-width:500px;
+}
+.max-width{
+    max-width:960px;
+}
+
+.first-post-wrapper{
+    background-image: url("https://picsum.photos/1400/1200");
+    background-size:cover;
+    background-repeat:no-repeat;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items: flex-end;
+    padding: 0 2rem 4rem;
+    color:white;
+    height: 50vh;
+    min-height:500px;
+}
+.first-post-wrapper:after{
+    position:absolute;
+    height:100%;
+    width:calc(100% + 16rem);
+    bottom:0;
+    left:-8rem;
+    content:"";
+    background-color:transparent;
+    opacity:1;
+    box-shadow: inset 0 -8rem 10rem 2rem black;
+}
+.first-post {
+    display:flex;
+    align-items: last baseline;
+    z-index: 10;
+}
+.first-post .post-title{
+    font-size: 4rem;
+    border-bottom: 1px solid white;
+}
+
+.first-post .post-body  p{
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+/** Normal posts */
+.posts-container{
+    position:relative;
+    left:0;
+    right:0;
+    margin:0 auto;
+    margin-bottom: 2rem;
+}
+.posts-container >*{
+    width:80%;
+    position:relative;
+    left:0;
+    right:0;
+    margin: 0 auto;
+}
+.posts-page{
+    margin-bottom:2rem;
+}
+.post-summary {
+    color:black;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:3.5rem;
+}
+.post-summary > *{
+    width:100%;
+}
+.post-summary > img{
+    position:relative;
+    margin: 1rem auto;
+    height:auto;
+    max-height: 450px;
+    cursor:pointer;
+}
+.post-summary  .post-title{
+    font-size: 3.2rem;
+    border-bottom: 1px solid black;
+}
+.post-title{
+    text-transform: uppercase;
+    margin-right: 2rem;
+    font-weight:900;
+    cursor:pointer;
+}
+.post-summary .post-body p{
+    max-height:300px;
+    overflow:hidden;
+    margin-bottom: 1rem;
+}
+.fade {
+    position: relative;
+  }
+  .fade:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 1.2em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  }
+.post-summary .post-body a, .first-post .post-body a{
+    text-decoration:none;
+    font-weight:700;
+    color:#08a5cb;
+    cursor:pointer;
+}
+.post{
+    display:flex;
+}
+
+/** pagination */
+.pagination{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:80%;
+    margin: 0 auto;
+}
+.pagination > li{
+    margin-bottom:1rem;
+}
+.pagination button{
+padding:1rem;
+background-color:black;
+font-weight: 700;
+color:white;
+font-size:1.4rem;
+border:2px solid black;
+transition: all 0.3s;
+}
+.pagination button:hover{
+    color:black;
+    background-color:white;
+}
+.pagination button.active{
+    color:black;
+    background-color:orange;
+}
+.pagination li:not(:last-child) button{
+    margin-right:0.4rem;
+}
+
+
+
+/** single post*/
+.post-content{
+    right:0;
+    left:0;
+    margin:0 auto;
+    width:80%;
+    position:relative;
+    transform: translate(0,-5rem);
+}
+
+.single-post > .poster-post{
+    width:100%;
+    min-height: 500px;
+    background-image: url("https://picsum.photos/1400/1120?t=1");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.post-content .post-title{
+    font-size:3.6rem;
+    background-color:white;
+    text-align:center;
+    padding-top:0.4rem;
+    border-bottom:2px solid black;
+    cursor: default;
+}
+.post-content .author-info{
+    margin-top:1rem;
+    margin-bottom:2rem;
+}
+.post-content .author-name, .post-content .email{
+    color:#08a5cb;
+    cursor:default;
+}
+.comments-title{
+    margin: 2rem 0 1rem;
+    padding-bottom:1rem;
+    border-bottom: 1px solid #e9ebee;
+}
+
+footer{
+    position:absolute;
+    width:100%;
+    height:4rem;
+    bottom:0;
+    background-color:green;
+}
+
+
+
+/** Loading animation */
+.animation-wrapper{
+    width:80px;
+    padding: 1rem 0;
+    margin:auto;
+
+}
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ripple div {
+    position: absolute;
+    border: 4px solid black;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  @keyframes lds-ripple {
+    0% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 72px;
+      height: 72px;
+      opacity: 0;
+    }
+  }
+  
+
+@media screen and (max-width:650px){
+    .post{
+        flex-wrap:wrap;
+    }
+    .post-summary .post-title{
+        margin-bottom:1rem;
+    }
+}
