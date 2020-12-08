@@ -40,7 +40,6 @@ function Blog(){
             li.append(commentName,commentBody,commentEmail);
             this.commentHTML = li;
             this.container.appendChild(li);
-            console.log(this.container);
         }
         displayComment(offset =0){
             setTimeout(()=>{
@@ -61,7 +60,6 @@ function Blog(){
     }
     class Post{
         constructor(userId,id,title,body){
-            console.log(id,title,body);
             this.id = id;
             this.title = title;
             this.body= body;
@@ -83,7 +81,6 @@ function Blog(){
                 return response.json();
             })
             .catch(error=>{
-                console.log(error);
                 return false;
             });
         }
@@ -96,7 +93,6 @@ function Blog(){
                 }
                 return response.json();
             }).catch(error=>{
-                console.log(error);
                 return false;
             });
         }
@@ -119,7 +115,6 @@ function Blog(){
             displayLoading();
             let userInfo = await this.#getUser(this.userId);
             hideLoading();
-            console.log(userInfo);
             let authorInfo = document.createElement("div");
             authorInfo.classList.add("author-info");
             let author = document.createElement("h4");
@@ -141,7 +136,6 @@ function Blog(){
             
 
             let comment = await this.#getComments(this.id);
-            console.log(comment);
             //comments
             let commentsContainer = document.createElement("div");
             commentsContainer.classList.add("comments-container");
@@ -188,7 +182,6 @@ function Blog(){
 
 
             });
-            console.log('I AM EXECUTING');
             commentTitle.appendChild(btnComments);
             commentsContainer.append(commentTitle,ulComments);
 
@@ -207,7 +200,6 @@ function Blog(){
 
     // Returns the clickable elements to display the entire post
     function addPost(postInfo,container){
-        //console.log(postInfo);
         let postSummary = document.createElement("li");
         postSummary.classList.add("post-summary");
         let imgPost = document.createElement("img");
@@ -265,10 +257,8 @@ function Blog(){
         hideLoading();
         //check for errors
         if(posts===false){
-            console.log("try again");
             return false;
         }
-        console.log(posts);
         //check deleted local Storage
         //check edited local Storage
 
@@ -286,7 +276,6 @@ function Blog(){
             }
             postsPages.push(postPage);
         }
-        console.log(postsPages);
         let pageIndex = -1; // stats and -1 because firstly 0%POSTS_PER_PAGE will be 0
         let clickableElements = []; // contains all the clickable elements that can display a post
         let createdPosts =[]; //array with all posts's index (position in the array) ordered as the clickableElements
@@ -303,20 +292,14 @@ function Blog(){
             clickableElements.push(...addPost(post,postsPages[pageIndex]));
             postsContainer.appendChild(postsPages[pageIndex]);
         });
-        console.log(clickableElements);
 
 
         postsContainer.addEventListener("click",(event)=>{
             let position = clickableElements.indexOf(event.target);
             if(position!==-1 && !createdPosts.includes(position)){
-                console.log(event.target);
                 let postIndex = parseInt(position/3); // for every 3 clickableElements (image, title, readMore) there is one ID
                 createdPosts.push(postIndex);
-                console.log(createdPosts);
                 //displayPOST
-                console.log("\nDATA\n")
-                console.log("\n **********************\n");
-                console.log(posts[postIndex]);
                 let pressedPost = posts[postIndex];
                 let newPost = new Post(pressedPost.userId,pressedPost.id,pressedPost.title,pressedPost.body);
                 this.posts.push(newPost);
@@ -338,7 +321,6 @@ function getPosts(){
         }
         return response.json()})
     .catch((error)=> {
-        console.log("The error "+error+" ocurred");
         return false;
     });
 }
