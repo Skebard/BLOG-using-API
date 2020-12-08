@@ -41,7 +41,7 @@ The implementation has been done in JS vanilla, css and html. The data comes fro
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Skebard/BASIC-TRIVIA.git
+   git clone https://github.com/Skebard/BLOG-using-API.git
    ```
 2. Open the index.html in your browser
 
